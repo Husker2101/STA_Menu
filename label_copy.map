@@ -1,0 +1,518 @@
+############################################################################################################
+############################################################################################################
+##  STAR TREK ARMADA
+############################################################################################################
+############################################################################################################
+
+multi_common {
+	+ insert_CD		{Please insert Armada CD}
+}
+
+multiplayer_connection {
+	+ title			{MULTIPLAYER CONNECTION}
+	+ enter_name		{Enter Name:}
+	+ previous_menu		{Previous Menu}
+	+ internet		{Internet}
+	+ lan_tcpip		{Local Area Network (TCP/IP)}
+	+ instant_action	{Instant Action}
+	+ enter_name_button	{Enter Name}
+	+ connect_won_try	{Trying to connect to a WON server}
+	+ generic_won_failure	{Could not connect to a WON server}
+	+ connect_lan_try	{Trying to connect to the LAN via TCP/IP}
+	+ cant_connect_lan	{Cannot connect to the LAN via TCP/IP}
+	+ logon_lan_try		{Attempting to logon to the LAN}
+	+ cant_logon_lan	{Could not logon to the LAN}
+	+ crc_checking		{CRC checking, please wait...}
+}
+
+won_login {
+	+ title			{WON LOGIN}
+	+ name			{Name}
+	+ password		{Password}
+	+ save_password		{Save Password}
+	+ new_profile		{Create New Profile}
+	+ change_password	{Change Password}
+	+ previous_menu		{Previous Menu}
+	+ log_in		{Log In}
+	+ won			{WON.net}
+	+ error			{Error}
+	+ ok			{O.K.}
+	+ cant_connect		{Can't connect to WON server}
+	+ new_version_exists	{Please download the patch to play on WON.}
+	+ bad_password		{Incorrect password}
+	+ server_busy		{The server is busy, try again later}
+	+ unknown_user		{This user name is unknown}
+	+ generic_failure	{Unable to log into WON}
+	+ previous_over		{Return to the protocol selection screen}
+	+ login_over		{Log into WON}
+	+ won_over		{Go to the WON web page}
+	+ new_profile_over	{Create a new WON account}
+	+ change_password_over	{Change your password}
+	+ name_over		{Type in your WON account login name}
+	+ password_over		{Type in your WON account password}
+	+ login_won_try 	{Trying to Log In to a WON server}
+	+ web_page		{http://www.won.net/re/armadawonnet/}
+}
+
+
+
+internet_game {
+	+ internet_title	{INTERNET GAME}
+	+ lan_title		{LAN GAME}
+	+ previous_menu		{Previous Menu}
+	+ help			{Help}
+	+ join_won		{Armada.WON.net}
+	+ join_won2		{Message Boards}
+	+ main_menu		{Main Menu}
+	+ join_game		{Join Game}
+	+ create_game		{Create Game}
+	+ join			{Join}
+	+ create		{Create}
+	+ find_player		{Find Player}
+	+ players_in_room	{Players In Room}
+	+ rooms			{Rooms}
+	+ current_games		{Current Games}
+	+ chat			{Chat}
+	+ ignore		{Ignore}
+	+ unignore		{Un-ignore}
+	+ change_room		{Change Room}
+	+ show_all		{Show all}
+	+ chat_in		{Chat in}
+	+ cancel		{Cancel}
+	+ ok			{O.K.}
+	+ press_cancel		{Press Cancel To Abort}
+	+ join_game_try		{Trying To Join Game}
+	+ join_room_try		{Trying To Join Room}
+	+ create_game_try	{Trying To Create Game}
+	+ create_room_try	{Trying To Create Room}
+	+ error			{Error!}
+	+ bad_password		{Incorrect Password!}
+	+ bad_ping		{You've been rejected because of your ping}
+	+ bad_crc		{CRC values do not match, different versions of the game}
+	+ locked		{The game you tried to join has been locked}
+	+ launched		{The game you tried to join has been launched}
+	+ abandoned		{The game you tried to join has been cancelled}
+	+ full			{The game you tried to join is full}
+	+ kicked		{You have been kicked from this game}
+	+ host_lost		{The host of this game has been lost}
+	+ host_quit		{The host of this game has quit}
+	+ i_quit		{You are unable to join this game}
+	+ game_create_failed	{The Game Create Failed}
+	+ invalid_password	{The Password has invalid characters}
+	+ invalid_name		{The Name has invalid characters}
+	+ room_full		{The room you tried to join is full}
+	+ room_abandon		{The room you tried to join is abandon}
+	+ room_join_failure	{Unable to join room}
+	+ disabled		{Chat Disabled in LAN play}
+	+ player_list_disabled_text_0 {Player List}
+	+ player_list_disabled_text_1 {disabled in}
+	+ player_list_disabled_text_2 {LAN play}
+	+ player_list_disabled_text_3 {}
+	+ player_list_disabled_text_4 {}
+	+ you_say		{You told}
+	+ privately_tells_you   {privately tells you}
+	+ web_page1		{http://www.won.net/re/armadagamesite/}
+	+ web_page2		{http://www.won.net/re/armadaboards/}
+}
+
+
+multiplayer_setup {
+	+ title			{GAME SETUP}
+	+ messages		{Messages}
+	+ previous_menu		{Previous Menu}
+	+ main_menu		{Main Menu}
+	+ launch		{LAUNCH}
+	+ select_map		{SELECT MAP}
+	+ launch_light		{L}
+	+ map_name		{Map Name}
+	+ map_description	{Map Description}
+	+ rules			{Rules}
+	+ options		{Options}
+	+ game_type		{Game Type}
+	+ max_players		{Max Players}
+	+ kick			{Kick}
+	+ handicap		{Handicap}
+	+ observer		{Observer}
+	+ federation		{Federation}
+	+ borg			{Borg}
+	+ romulan		{Romulan}
+	+ klingon		{Klingon}
+	+ random		{Random}
+	+ alliance		{Alliances}
+	+ teams			{Teams}
+	+ empty			{Empty Slot}
+	+ computer_easy		{Computer AI:Easy}
+	+ computer_medium	{Computer AI:Medium}
+	+ computer_hard		{Computer AI:Hard}
+	+ shroud_fog_on_on	{Shroud On, Fog On}
+	+ shroud_fog_off_on	{Shroud Off, Fog On}
+	+ shroud_fog_on_off	{Shroud On, Fog Off}
+	+ shroud_fog_off_off	{Shroud Off, Fog Off}
+	+ fixed_placement_on	{Random Placement}
+	+ fixed_placement_off	{Fixed Placement}
+	+ show_all		{Show All}
+	+ show_available	{Show Available}
+	+ show_allies		{Show Allies}
+	+ show_none		{Show None}
+	+ hide_minimap_on	{Minimap Shown}
+	+ hide_minimap_off	{Minimap Hidden}
+	+ alliances_teams_on	{Alliances}
+	+ alliances_teams_off	{Teams}
+	+ tech_level_one	{Standard Tech (ST)}
+	+ tech_level_two	{No Super Weapons}
+	+ tech_level_three	{No Science ships}
+	+ tech_level_four	{No Special Weapons}
+	+ tech_level_five	{Classic Graphics (ST)}
+	+ tech_level_six	{Adv. STA-Remaster}
+	+ tech_level_seven	{Super Side Tech}
+	+ give_units_on 	{Give Units On}
+	+ give_units_off	{Give Units Off}
+	+ spectator_on		{Spectator On}
+	+ spectator_off		{Spectator Off}
+	+ directors_off		{Directors Cut On}
+	+ directors_on		{Directors Cut Off}
+	+ infinite_moons_off	{Infinite Moons On}
+	+ infinite_moons_on	{Infinite Moons Off}
+	+ ferengi_off		{Ferengi On}
+	+ ferengi_on		{Ferengi Off}
+	+ default_units_map	{Map Units}
+	+ default_units_minimal	{Minimal Units}
+	+ default_units_standard	{Standard Units}
+	+ default_units_super		{Super Side}
+	+ team_1		{Team 1}
+	+ team_2		{Team 2}
+	+ team_3		{Team 3}
+	+ team_4		{Team 4}
+	+ team_5		{Team 5}
+	+ team_6		{Team 6}
+	+ team_7		{Team 7}
+	+ team_8		{Team 8}
+	+ normal_game_type	{Normal Game}
+	+ head_to_head_type	{Head To Head}
+	+ ladder_game_type	{Ladder Game}
+	+ ping_filter_off	{Ping Filter Off}
+	+ ping_filter_200	{Ping Filter 200}
+	+ ping_filter_400	{Ping Filter 400}
+	+ ping_filter_600	{Ping Filter 600}
+	+ maximum_players_8	{Max Players: 8}
+	+ maximum_players_7	{Max Players: 7}
+	+ maximum_players_6	{Max Players: 6}
+	+ maximum_players_5	{Max Players: 5}
+	+ maximum_players_4	{Max Players: 4}
+	+ maximum_players_3	{Max Players: 3}
+	+ maximum_players_2	{Max Players: 2}
+	+ lock_game_on		{Game Closed}
+	+ lock_game_off		{Game Open}
+	+ game_name 		{Game Name}
+	+ player_name		{Player Name}
+	+ side			{Side}
+	+ players		{Players}
+	+ alliance_team		{Team Selection Mode}
+	+ spectator		{Spectators}
+	+ super_side		{Super Side}
+	+ handicap		{Handicap}
+	+ anomolies		{Anomolies}
+	+ comets		{Comets}
+	+ credits		{Credits}
+	+ all			{ALL}
+	+ private		{PRIVATE}
+	+ allies		{ALLIES}
+	+ enemies		{ENEMIES}
+	+ on			{ON}
+	+ off			{OFF}
+	+ starting_crew		{Crew}
+	+ max_officers		{Officers}
+	+ starting_dilithium	{Dilithium}
+	+ sd_value_1		{3000}
+	+ sd_value_2		{4000}
+	+ sd_value_3		{5000}
+	+ sd_value_4		{7500}
+	+ sd_value_5		{10000}
+	+ sc_value_1		{3500}
+	+ sc_value_2		{5000}
+	+ sc_value_3		{7500}
+	+ sc_value_4		{10000}
+	+ sc_value_5		{99999}
+	+ mo_value_1		{100}
+	+ mo_value_2		{150}
+	+ mo_value_3		{200}
+	+ mo_value_4		{250}
+	+ mo_value_5		{999}
+	+ want_to_launch	{The host wants to launch}
+	+ game_overloaded	{There are too many players for this map}
+	+ one_team		{There is only one team in this game}	
+	+ need_cds		{You need 1 CD for every 4 players on LAN}
+        + system		{System}
+	+ player_limit_warning	{<System>This game exceeds the recommended number of players for modem Internet play}
+	+ bullet		{•}
+	
+}
+########################################################################################################
+
+multiplayer_create_game_popup {
+	+ name		{Game Name:}
+	+ password		{Password:}
+	+ ok_button		{O.K.}
+	+ cancel_button	{Cancel}
+}
+
+multiplayer_create_room_popup {
+	+ name		{Room Name:}
+	+ password		{Password:}
+	+ ok_button		{O.K.}
+	+ cancel_button	{Cancel}
+}
+
+multiplayer_password_popup {
+	+ password		{Password:}
+	+ ok_button		{O.K.}
+	+ cancel_button	{Cancel}
+}
+
+multiplayer_debriefing {
+	+ continue 		{Continue}
+	+ quit		{Quit To Windows}
+	+ title		{DEBRIEFING}
+	+ dilithium		{Dilithium}
+	+ created		{Created}
+	+ lost		{Lost}
+	+ destroyed		{Destroyed}
+	+ name		{Name}
+	+ side		{Side}
+	+ handicap		{Handicap}
+	+ collected	{Collected}
+	+ spent		{Spent}
+	+ ships		{Ships}
+	+ stations		{Stations}
+}
+
+main_menu {
+	+ single_player  	{Single Player}
+	+ multiplayer  		{Multi Player}
+	+ options		{Options}
+	+ replay_intro		{Replay Intro}
+ 	+ quit			{Quit}
+	+ credits		{Credits}
+	+ button_font		{Arial}
+}
+
+single_player {
+	+ previous_menu		{PREVIOUS MENU}
+	+ load_game		{LOAD GAME}
+	+ title			{SINGLE PLAYER}
+	+ federation_incomplete	{Federation campaign not complete}
+	+ klingon_incomplete	{Klingon campaign not complete}
+	+ romulan_incomplete	{Romulan campaign not complete}
+}
+
+mission_select {
+	+ title			{SELECT MISSION}
+	+ ok_button		{O.K.}
+	+ cancel_button		{Cancel}
+	+ fed1.bzn		{Premonitions}
+	+ fed2.bzn		{Paradise Revisited}
+	+ fed5.bzn		{Vendetta}
+	+ fed3.bzn		{Dark Omens}
+	+ fed4.bzn		{TEST FOR ART}
+	+ kling3.bzn	{To the Gates of Sto'Vo'Kor}
+	+ kling1.bzn	{The Enemy Within}
+	+ kling4.bzn	{A Good Day to Die}
+	+ kling2.bzn	{Broken Ties}
+	+ kling5.bzn	{Gray Eminence}
+	+ rom2.bzn		{Cloak and Dagger}
+	+ rom4.bzn		{Call to Power}
+	+ rom3.bzn		{The Gauntlet}
+	+ rom1.bzn		{Retribution}
+	+ rom5.bzn		{Unholy Alliances}
+	+ borg1.bzn		{Resurrection}
+	+ borg3.bzn		{Assimilation}
+	+ borg4.bzn		{Extermination}
+	+ borg2.bzn		{Day of Reckoning}
+	+ borg5.bzn		{The Twilight Hour}
+	+ finale2.bzn	{Time after Time}
+	+ finale4.bzn	{Once and Again}
+	+ finale3.bzn 	{Strange Bedfellows}
+	+ finale1.bzn	{A Line in the Sand}
+	+ finale5.bzn	{The Alpha and the Omega, Part I}
+	+ finale6.bzn	{The Alpha and the Omega, Part II}
+}
+
+load_game {
+	+ title			{LOAD GAME}
+	+ previous_menu		{Previous Menu}
+	+ load_game_text	{Load Game}
+	+ delete_game		{Delete Game}
+}
+
+save_game {
+	+ title			{SAVE GAME}
+	+ previous_menu		{Previous Menu}
+	+ save_game_text	{Save Game}
+	+ delete_game		{Delete Game}
+}
+
+
+multiplayer_map_select {
+	+ size_1		{Size 1?}
+	+ size_2		{Size 2?}
+	+ size_3		{Size 3?}
+	+ all_maps		{All Maps}
+	+ maximum_players_8	{8 Players}
+	+ maximum_players_7	{7 Players}
+	+ maximum_players_6	{6 Players}
+	+ maximum_players_5	{5 Players}
+	+ maximum_players_4	{4 Players}
+	+ maximum_players_3	{3 Players}
+	+ maximum_players_2	{2 Players}
+	+ map_type_one		{Map Type 1}
+	+ map_type_two		{Map Type 2}
+	+ select_map_button	{Select Map}
+	+ cancel_button		{Cancel}
+	+ random_button		{Random}
+}
+
+save_over {
+	+ warning 		{Warning:}
+	+ ok_button		{Yes}
+	+ cancel_button		{No}
+	+ message		{Overwrite game?}
+}
+
+abort_mission_popup {
+	+ warning 		{Warning:}
+	+ ok_button		{Yes}
+	+ cancel_button		{No}
+	+ message		{Are you sure you want to abort the mission?}
+}
+race_names {
+	+ federation		{Federation}
+	+ borg			{Borg}
+	+ klingon		{Klingon}
+	+ romulan		{Romulan}
+	+ super		{Super Side}
+}
+
+escape_menu {
+	+ title			{OPTIONS}
+	+ restate		{Restate Objectives}
+	+ save_game		{Save Game}
+	+ load_game		{Load Game}
+	+ graphics		{Graphics Settings}
+	+ sound			{Sound Settings}
+	+ game			{Game Settings}
+	+ abort			{Abort Mission}
+	+ surrender		{Surrender}
+	+ return		{Return to Game}
+}
+
+game_settings {
+	+ title			{GAME SETTINGS}
+	+ game_difficulty	{Game Difficulty}
+	+ easy			{Easy}
+	+ medium		{Medium}
+	+ hard			{Hard}
+	+ game_speed		{Game Speed}
+	+ mouse_scroll_speed	{Mouse Scroll Speed}
+	+ keyboard_scroll_speed	{Keyboard Scroll Speed}
+	+ mouse_button_interface {Mouse Button Interface}
+	+ right_click		{Right Click}
+	+ left_click		{Left Click}
+	+ mouse_camera_control	{Mouse Camera Control}
+	+ directors_cut		{Directors Cut}
+	+ on			{On}
+	+ off			{Off}
+	+ previous		{Previous Menu}
+}
+
+sound_settings {
+	+ title			{SOUND SETTINGS}
+	+ music_volume		{Music Volume}
+	+ effects_volume	{Effects Volume}
+	+ voice_volume		{Voice Volume}
+	+ sound_channels	{Sound Channels}
+	+ stereo_sound		{Stereo Sound}
+	+ unit_speech		{Unit Speech}
+	+ alert_audio		{Alert Audio}
+	+ building_sounds	{Building Sounds}
+	+ previous_menu		{Previous Menu}
+	+ on			{On}
+	+ off			{Off}
+}
+
+graphics_settings {
+	+ title			{GRAPHICS SETTINGS}
+	+ display_settings	{Display Settings}
+	+ display_mode		{Display Mode}
+	+ display_driver	{Display Driver}
+	+ gamma_correction	{Gamma Correction}
+	+ background_brightness {Background Brightness}
+ 	+ dual_monitor_support 	{Dual Monitor Support}
+	+ on			{On}
+	+ off			{Off}
+	+ second_monitor_driver {Second Monitor Display Driver}
+	+ performance_settings  {Performance Settings}
+	+ hardware_acceleration {Hardware Acceleration}
+	+ aliased_fonts {Use Alternate Font}
+	+ cinematic_window	{Cinematic Window}
+	+ ship_detail		{Graphics Detail}
+	+ texture_detail	{Texture Detail}
+	+ effects		{Effects}
+	+ background		{Background}
+	+ previous		{Previous Menu}
+	+ default		{Default}
+	+ unsupported		{}
+}
+
+create_new_account {
+	+ title			{CREATE NEW ACCOUNT}
+	+ name			{Name}
+	+ password		{Password}
+	+ password2		{Reenter Password}
+	+ email			{Email Address}
+	+ email_message		{If you do not give your e-mail address, we cannot}
+	+ email_message2	{send you your password if you lose it.}
+	+ ok			{O.K.}
+	+ cancel		{Cancel}
+	+ error			{Error}
+	+ different_passwords	{The two passwords are different}
+	+ generic_error		{The account creation has failed}
+	+ success		{Success!}
+	+ account_created	{Account created!}
+	+ account_create_failed {The account creation has failed}
+	+ account_create_taken	{Sorry, that user name is taken}
+	+ account_create_bad_name	{That name is not acceptable for use one WON}
+	+ account_create_bad_password	{The password you specified is not acceptable for use on WON}
+	+ account_create_try	{Trying to create this account}
+	+ password_short	{The password needs to be at least 6 letters}
+	+ iam13			{I am at least 13 years old}
+}
+
+change_password {
+	+ title			{Change Password}
+	+ name			{Name}
+	+ password		{Old Password}
+	+ password2		{New Password}
+	+ password3		{Reenter New Password}
+	+ ok			{O.K.}
+	+ cancel		{Cancel}
+	+ password_changed	{Password successfully changed!}
+	+ generic_error		{Unable to change password}
+	+ change_failed		{Unable to change password}
+	+ bad_password		{The password you specified is not acceptable for use on WON}
+	+ attempting		{Attempting to changet he password}
+}	
+
+help_window {
+	+ title			{Help}
+	+ ok			{O.K.}
+	+ filename		{help\\nethelp.txt}
+}
+
+demo {
+	+ demo_enabled	{Not Available in Demo}
+}
+
+multiplayer_room_select {
+	+ select_room_button {Select Room}
+	+ create_room {Create Room}
+}
