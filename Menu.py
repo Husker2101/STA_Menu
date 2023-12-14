@@ -3,7 +3,7 @@ from tkinter import PhotoImage, font, Label, Frame, Text
 import subprocess, os
 import pygame
 import shutil
-from PIL import Image, ImageTk
+from PIL import Image
 
 
 def button1_clicked():
