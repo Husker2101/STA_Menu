@@ -2,8 +2,10 @@ import tkinter as tk
 from tkinter import PhotoImage, font, Label, Frame, Text
 import subprocess, os
 import pygame
+from pygame import mixer
 import shutil
 from ctypes import windll
+from threading import Thread
 
 
 def button1_clicked():
@@ -572,13 +574,24 @@ def update_output_text(text, color):
     output_text.tag_configure(color, foreground=color)
     output_text.config(state=tk.DISABLED)
 
-
 # Tkinter-Fenster erstellen
 root = tk.Tk()
 root.title("Star Trek Armada Game Setup")
 root.resizable(width=False, height=False)
+
 pygame.init()
 pygame.mixer.init()
+
+def play_music():
+    #mixer.init()
+    sound_folder = "sounds/effects"
+    music_file = "Shellsd0.WAV"
+    music_path = os.path.join(sound_folder, music_file)
+    mixer.music.load(music_path)
+    mixer.music.play()
+
+play_music()
+
 
 # Bild für das Taskleistensymbol
 icon_path = "icon32.ico"

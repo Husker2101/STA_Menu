@@ -1,0 +1,7 @@
+techfile0 = "tech1.tt"
+techfile1 = "nosuper.tt"
+techfile2 = "nosci.tt"
+techfile3 = "nospweap.tt"
+techfile4 = "scionly.tt" // Classic Graphics
+techfile5 = "freetech.tt" // Advanced Armada Remaster
+techfile6 = "supersid.tt"

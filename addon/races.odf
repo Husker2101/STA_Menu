@@ -1,0 +1,11 @@
+numberOfRaces = 10
+race0 = "borg.odf"
+race1 = "dom.odf"
+race2 = "fed.odf"
+race3 = "kling.odf"
+race4 = "rom.odf"
+race5 = "card.odf"
+race6 = "fer.odf"
+race7 = "alien.odf"
+race8 = "sona.odf"
+race9 = "breen.odf"
