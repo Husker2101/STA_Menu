@@ -556,7 +556,7 @@ start_button.bind("<Leave>", lambda event: on_leave(start_button, image_S))
 
 # Button Map erstellen
 image_M = PhotoImage(file="image_M.png")
-highlight_M = PhotoImage(file="highlight_S.png")
+highlight_M = PhotoImage(file="highlight_M.png")
 map_button = tk.Button(root, image=image_M, command=open_map_button, borderwidth=0, highlightthickness=0)
 map_button.bind("<Enter>", lambda event: on_hover(map_button, highlight_M))
 map_button.bind("<Leave>", lambda event: on_leave(map_button, image_M))
