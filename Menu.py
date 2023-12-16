@@ -9,6 +9,8 @@ from ctypes import windll
 def button1_clicked():
     print("Remaster Modus aktiviert")
     play_sound("sound_b.wav")
+    rename_directories("AI", "AI_Temp")
+    rename_directories("AI_Container", "AI")
     rename_directories("addon", "Addon_Temp")
     rename_directories("Addon_Container", "addon")
     rename_directories("Sod", "Sod_Temp")
@@ -18,11 +20,11 @@ def button1_clicked():
     check_for_dom_file()
     check_for_rom_file()
     check_text_file()
+    check_tech_file()
     button1.place_forget()
     button2.place(x=64, y=244)
     update_output_text("Remaster Modus aktiviert", "green")
     create_mshell_copy()
-    root.focus_set()
 
 def create_mshell_copy():
     current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -42,6 +44,8 @@ def create_mshell_copy():
 def button2_clicked():
     print("Classic Modus aktiviert")
     play_sound("sound_b.wav")
+    rename_directories("AI", "AI_Container")
+    rename_directories("AI_Temp", "AI")
     rename_directories("addon", "Addon_Container")
     rename_directories("Addon_Temp", "addon")
     rename_directories("Sod", "Sod_Container")
@@ -55,6 +59,8 @@ def button2_clicked():
     button6.place_forget()
     button7.place_forget()
     button8.place_forget()
+    button9.place_forget()
+    button10.place_forget()
     button1.place(x=64, y=244)
     update_output_text("Classic Modus aktiviert", "green")
     replace_mshell_with_copy()
@@ -89,7 +95,7 @@ def button3func():
     addon_path = os.path.join(current_dir, "addon")
     races_path = os.path.join(addon_path, "races.odf")
     if current_dir:
-        races_path = addon_path + "/races.odf"
+        races_path = races_path
         with open(races_path, "r") as file:
             content = file.read()
             if "dominion" in content:
@@ -124,7 +130,7 @@ def button4func():
     addon_path = os.path.join(current_dir, "addon")
     races_path = os.path.join(addon_path, "races.odf")
     if current_dir:
-        races_path = addon_path + "/races.odf"
+        races_path = races_path
         with open(races_path, "r") as file:
             content = file.read()
             if "dominion" in content:
@@ -154,6 +160,45 @@ def button5_clicked():
     button5func()
     button6.place(x=1456, y=244)
 
+def button5func():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    mshell_path = os.path.join(current_dir, "mshell.set")
+    if current_dir:
+        #mshell_path = current_dir + "/mshell.set"
+        mshell_path = mshell_path
+        with open(mshell_path, "r") as file:
+            content = file.read()
+            if "fed1a" in content:
+                update_label_map("fed1a", "fed1")
+                update_label_map("fed2a", "fed2")
+                update_label_map("fed3a", "fed3")
+                update_label_map("fed5a", "fed5")
+                new_content = content.replace("fed1a", "fed1")
+                new_content = new_content.replace("fed2a", "fed2")
+                new_content = new_content.replace("fed3a", "fed3")
+                new_content = new_content.replace("fed5a", "fed5")
+                with open(mshell_path, "w") as new_file:
+                    new_file.write(new_content)
+                    update_output_text("Standard Missions activated", "green")
+                if not button5.winfo_ismapped():  # Überprüfen, ob der Button sichtbar ist
+                    button5.place_forget()  # Falls sichtbar, ausblenden
+                    button6.place(x=1456, y=244)  # Falls nicht sichtbar, platzieren
+            elif "fed1" in content:
+                update_label_map("fed1", "fed1a")
+                update_label_map("fed2", "fed2a")
+                update_label_map("fed3", "fed3a")
+                update_label_map("fed5", "fed5a")
+                new_content = content.replace("fed1", "fed1a")
+                new_content = new_content.replace("fed2", "fed2a")
+                new_content = new_content.replace("fed3", "fed3a")
+                new_content = new_content.replace("fed5", "fed5a")
+                with open(mshell_path, "w") as new_file:
+                    new_file.write(new_content)
+                    update_output_text("New Missions activated", "green")
+                if not button5.winfo_ismapped():
+                    button5.place_forget()
+                    button6.place(x=1456, y=244)
+
 def button6_clicked():
     button6.place_forget()
     print("Original Missions")
@@ -161,6 +206,44 @@ def button6_clicked():
    # update_output_text("New Missions activated", "green")
     button6func()
     button5.place(x=1456, y=244)
+
+def button6func():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    mshell_path = os.path.join(current_dir, "mshell.set")
+    if current_dir:
+        mshell_path = mshell_path
+        with open(mshell_path, "r") as file:
+            content = file.read()
+            if "fed1a" in content:
+                update_label_map("fed1a", "fed1")
+                update_label_map("fed2a", "fed2")
+                update_label_map("fed3a", "fed3")
+                update_label_map("fed5a", "fed5")
+                new_content = content.replace("fed1a", "fed1")
+                new_content = new_content.replace("fed2a", "fed2")
+                new_content = new_content.replace("fed3a", "fed3")
+                new_content = new_content.replace("fed5a", "fed5")
+                with open(mshell_path, "w") as new_file:
+                    new_file.write(new_content)
+                    update_output_text("Standard Missions activated", "green")
+                if not button6.winfo_ismapped():
+                    button6.place_forget()
+                    button5.place(x=1456, y=244)
+            elif "fed1" in content:
+                update_label_map("fed1", "fed1a")
+                update_label_map("fed2", "fed2a")
+                update_label_map("fed3", "fed3a")
+                update_label_map("fed5", "fed5a")
+                new_content = content.replace("fed1", "fed1a")
+                new_content = new_content.replace("fed2", "fed2a")
+                new_content = new_content.replace("fed3", "fed3a")
+                new_content = new_content.replace("fed5", "fed5a")
+                with open(mshell_path, "w") as new_file:
+                    new_file.write(new_content)
+                    update_output_text("New Missions activated", "green")
+                if not button6.winfo_ismapped():
+                    button6.place_forget()
+                    button5.place(x=1456, y=244)
 
 def button7_clicked():
     button7.place_forget()
@@ -174,7 +257,7 @@ def button7func():
     addon_path = os.path.join(current_dir, "addon")
     races_path = os.path.join(addon_path, "races.odf")
     if current_dir:
-        races_path = addon_path + "/races.odf"
+        races_path = races_path
         with open(races_path, "r") as file:
             content = file.read()
             if "typhon" in content:
@@ -208,7 +291,7 @@ def button8func():
     addon_path = os.path.join(current_dir, "addon")
     races_path = os.path.join(addon_path, "races.odf")
     if current_dir:
-        races_path = addon_path + "/races.odf"
+        races_path = races_path
         with open(races_path, "r") as file:
             content = file.read()
             if "typhon" in content:
@@ -230,23 +313,118 @@ def button8func():
                     button8.place_forget()  # Falls sichtbar, ausblenden
                     button7.place(x=992, y=244) # Falls nicht sichtbar, platzieren
 
+
+def button9_clicked():
+    button9.place_forget()
+    print("Extended Techtree")
+    play_sound("sound_b.wav")
+    #rename_directories("AI", "AI_Container")
+  #  update_output_text("Standard Missions activated", "green")
+    button9func()
+    button10.place(x=704, y=683)
+
+def button9func():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    addon_path = os.path.join(current_dir, "addon")
+    tech_path = os.path.join(addon_path, "techlvl.odf")
+    if current_dir:
+      #  rename_directories("AI\\AIPs", "AI\\AIPs_O")
+       # rename_directories("AI\\AIPs_R", "AI\\AIPs")
+        tech_path = tech_path
+        with open(tech_path, "r") as file:
+            content = file.read()
+            if "tech1rem" in content:
+                update_label_map("tech1rem", "tech1")
+                new_content = content.replace("tech1rem", "tech1")
+                rename_directories(os.path.join(current_dir, "AI/AIPs"), os.path.join(current_dir, "AI/AIPs_R"))
+                rename_directories(os.path.join(current_dir, "AI/AIPs_O"), os.path.join(current_dir, "AI/AIPs"))              
+                with open(tech_path, "w") as new_file:
+                    new_file.write(new_content)
+                    update_output_text("Standard Techtree activated", "green")
+                if not button9.winfo_ismapped():  # Überprüfen, ob der Button sichtbar ist
+                    button9.place_forget()  # Falls sichtbar, ausblenden
+                    button10.place(x=704, y=683)  # Falls nicht sichtbar, platzieren
+            elif "tech1" in content:
+                update_label_map("tech1", "tech1rem")
+                new_content = content.replace("tech1", "tech1rem")
+                rename_directories(os.path.join(current_dir, "AI/AIPs"), os.path.join(current_dir, "AI/AIPs_O"))
+                rename_directories(os.path.join(current_dir, "AI/AIPs_R"), os.path.join(current_dir, "AI/AIPs"))
+                with open(tech_path, "w") as new_file:
+                    new_file.write(new_content)
+                    update_output_text("Extended Techtree activated", "green")
+                if not button9.winfo_ismapped():
+                    button9.place_forget()
+                    button10.place(x=704, y=683)
+
+def button10_clicked():
+    button10.place_forget()
+    print("Standard Techtree")
+    play_sound("sound_b.wav")
+   # update_output_text("New Missions activated", "green")
+    button10func()
+    button9.place(x=704, y=683)
+
+def button10func():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    addon_path = os.path.join(current_dir, "addon")
+    tech_path = os.path.join(addon_path, "techlvl.odf")
+    if current_dir:
+      #  rename_directories("AI\\AIPs", "AI\\AIPs_R")
+      #  rename_directories("AI\\AIPs_O", "AI\\AIPs")
+        tech_path = tech_path
+        with open(tech_path, "r") as file:
+            content = file.read()
+            if "tech1rem" in content:
+                update_label_map("tech1rem", "tech1")
+                new_content = content.replace("tech1rem", "tech1")
+                rename_directories("AI\\AIPs", "AI\\AIPs_R") 
+                rename_directories("AI\\AIPs_O", "AI\\AIPs")
+                with open(tech_path, "w") as new_file:
+                    new_file.write(new_content)
+                    update_output_text("Standard Techtree activated", "green")
+                if not button10.winfo_ismapped():
+                    button10.place_forget()
+                    button9.place(x=704, y=683)
+            elif "tech1" in content:
+                update_label_map("tech1", "tech1rem")
+                new_content = content.replace("tech1", "tech1rem")
+                rename_directories("AI\\AIPs", "AI\\AIPs_O") 
+                rename_directories("AI\\AIPs_R", "AI\\AIPs")
+                with open(tech_path, "w") as new_file:
+                    new_file.write(new_content)
+                    update_output_text("Extended Techtree activated", "green")
+                if not button10.winfo_ismapped():
+                    button10.place_forget()
+                    button9.place(x=704, y=683)
+
+def check_tech_file():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    addon_path = os.path.join(current_dir, "addon")
+    tech_path = os.path.join(addon_path, "techlvl.odf")
+    
+    # Überprüfen, ob im Classic-Modus
+    if os.path.exists(os.path.join(current_dir, "Addon_Container")):
+        button9.place_forget()
+        button10.place_forget()
+        return
+    
+    if os.path.isfile(tech_path):
+        with open(tech_path, "r") as file:
+            content = file.read()
+            if "tech1rem" in content:
+                button10.place(x=704, y=683)
+                print("Extended Techtree")
+            elif "tech1" in content:
+                button9.place(x=704, y=683)
+                print("Standard Techtree")
+
 def show_start_button():
     start_button.place(x=998, y=900)
-    button1.place_forget()
-    button2.place_forget()
-    button3.place_forget()
-    button4.place_forget()
-    button5.place_forget()
-    button6.place_forget()
+
 
 def show_map_button():
     map_button.place(x=998, y=900)
-    button1.place_forget()
-    button2.place_forget()
-    button3.place_forget()
-    button4.place_forget()
-    button5.place_forget()
-    button6.place_forget()
+
 
 def check_for_dom_file():
     current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -289,6 +467,7 @@ def check_addon_directory():
         update_output_text("Remaster Modus aktiviert", "green")
         check_for_dom_file()
         check_for_rom_file()
+        check_tech_file()
     elif os.path.exists(addon_container_path):
         button1.place(x=64, y=244)
         update_output_text("Classic Modus aktiviert", "green")
@@ -336,82 +515,6 @@ def on_leave(button, original_image):
 
 def play_sound(sound_path):
     pygame.mixer.Sound(sound_path).play()
-
-def button5func():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    mshell_path = os.path.join(current_dir, "mshell.set")
-    if current_dir:
-        mshell_path = current_dir + "/mshell.set"
-        with open(mshell_path, "r") as file:
-            content = file.read()
-            if "fed1a" in content:
-                update_label_map("fed1a", "fed1")
-                update_label_map("fed2a", "fed2")
-                update_label_map("fed3a", "fed3")
-                update_label_map("fed5a", "fed5")
-                new_content = content.replace("fed1a", "fed1")
-                new_content = new_content.replace("fed2a", "fed2")
-                new_content = new_content.replace("fed3a", "fed3")
-                new_content = new_content.replace("fed5a", "fed5")
-                with open(mshell_path, "w") as new_file:
-                    new_file.write(new_content)
-                    update_output_text("Standard Missions activated", "green")
-                if not button5.winfo_ismapped():  # Überprüfen, ob der Button sichtbar ist
-                    button5.place_forget()  # Falls sichtbar, ausblenden
-                    button6.place(x=1456, y=244)  # Falls nicht sichtbar, platzieren
-            elif "fed1" in content:
-                update_label_map("fed1", "fed1a")
-                update_label_map("fed2", "fed2a")
-                update_label_map("fed3", "fed3a")
-                update_label_map("fed5", "fed5a")
-                new_content = content.replace("fed1", "fed1a")
-                new_content = new_content.replace("fed2", "fed2a")
-                new_content = new_content.replace("fed3", "fed3a")
-                new_content = new_content.replace("fed5", "fed5a")
-                with open(mshell_path, "w") as new_file:
-                    new_file.write(new_content)
-                    update_output_text("New Missions activated", "green")
-                if not button5.winfo_ismapped():
-                    button5.place_forget()
-                    button6.place(x=1456, y=244)
-
-def button6func():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    mshell_path = os.path.join(current_dir, "mshell.set")
-    if current_dir:
-        mshell_path = current_dir + "/mshell.set"
-        with open(mshell_path, "r") as file:
-            content = file.read()
-            if "fed1a" in content:
-                update_label_map("fed1a", "fed1")
-                update_label_map("fed2a", "fed2")
-                update_label_map("fed3a", "fed3")
-                update_label_map("fed5a", "fed5")
-                new_content = content.replace("fed1a", "fed1")
-                new_content = new_content.replace("fed2a", "fed2")
-                new_content = new_content.replace("fed3a", "fed3")
-                new_content = new_content.replace("fed5a", "fed5")
-                with open(mshell_path, "w") as new_file:
-                    new_file.write(new_content)
-                    update_output_text("Standard Missions activated", "green")
-                if not button6.winfo_ismapped():
-                    button6.place_forget()
-                    button5.place(x=1456, y=244)
-            elif "fed1" in content:
-                update_label_map("fed1", "fed1a")
-                update_label_map("fed2", "fed2a")
-                update_label_map("fed3", "fed3a")
-                update_label_map("fed5", "fed5a")
-                new_content = content.replace("fed1", "fed1a")
-                new_content = new_content.replace("fed2", "fed2a")
-                new_content = new_content.replace("fed3", "fed3a")
-                new_content = new_content.replace("fed5", "fed5a")
-                with open(mshell_path, "w") as new_file:
-                    new_file.write(new_content)
-                    update_output_text("New Missions activated", "green")
-                if not button6.winfo_ismapped():
-                    button6.place_forget()
-                    button5.place(x=1456, y=244)
 
 def open_start_button():
     print("Launch")
@@ -546,6 +649,20 @@ highlight_H = PhotoImage(file="highlight_H.png")
 button8 = tk.Button(root, image=image_H, command=button8_clicked, borderwidth=0, highlightthickness=0)
 button8.bind("<Enter>", lambda event: on_hover(button8, highlight_H))
 button8.bind("<Leave>", lambda event: on_leave(button8, image_H))
+
+# Button 9 erstellen
+image_I = PhotoImage(file="image_TechS.png")
+highlight_I = PhotoImage(file="highlight_TechS.png")
+button9 = tk.Button(root, image=image_I, command=button9_clicked, borderwidth=0, highlightthickness=0)
+button9.bind("<Enter>", lambda event: on_hover(button9, highlight_I))
+button9.bind("<Leave>", lambda event: on_leave(button9, image_I))
+
+# Button 10 erstellen
+image_J = PhotoImage(file="image_TechE.png")
+highlight_J = PhotoImage(file="highlight_TechE.png")
+button10 = tk.Button(root, image=image_J, command=button10_clicked, borderwidth=0, highlightthickness=0)
+button10.bind("<Enter>", lambda event: on_hover(button10, highlight_J))
+button10.bind("<Leave>", lambda event: on_leave(button10, image_J))
 
 # Button Start erstellen
 image_S = PhotoImage(file="image_S.png")

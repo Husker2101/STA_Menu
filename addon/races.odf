@@ -1,5 +1,5 @@
 numberOfRaces = 10
-race0 = "borg.odf"
+race0 = "dominion.odf"
 race1 = "dom.odf"
 race2 = "fed.odf"
 race3 = "kling.odf"
