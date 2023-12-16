@@ -3,7 +3,7 @@ from tkinter import PhotoImage, font, Label, Frame, Text
 import subprocess, os
 import pygame
 import shutil
-from PIL import Image
+from ctypes import windll
 
 
 def button1_clicked():
@@ -16,11 +16,13 @@ def button1_clicked():
     rename_directories("Textures", "Texture_Temp")
     rename_directories("Texture_Container", "Textures")
     check_for_dom_file()
+    check_for_rom_file()
     check_text_file()
     button1.place_forget()
-    button2.place(x=31, y=244)
+    button2.place(x=64, y=244)
     update_output_text("Remaster Modus aktiviert", "green")
     create_mshell_copy()
+    root.focus_set()
 
 def create_mshell_copy():
     current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -51,7 +53,9 @@ def button2_clicked():
     button4.place_forget()
     button5.place_forget()
     button6.place_forget()
-    button1.place(x=31, y=244)
+    button7.place_forget()
+    button8.place_forget()
+    button1.place(x=64, y=244)
     update_output_text("Classic Modus aktiviert", "green")
     replace_mshell_with_copy()
 
@@ -73,76 +77,158 @@ def replace_mshell_with_copy():
         print("mshell.set nicht gefunden")
 
 def button3_clicked():
+    button3.place_forget()
     print("Dom")
     play_sound("sound_b.wav")
-    #update_output_text("The Borg invasion has begun", "green")
+   # update_output_text("New Missions activated", "green")
+    button3func()
+    button4.place(x=528, y=244)  
 
+def button3func():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     addon_path = os.path.join(current_dir, "addon")
-
-    # Umbenennen der Dateien
-    borg_path = os.path.join(addon_path, "borg.odf")
-    dom_path = os.path.join(addon_path, "tempdom.odf")
-    temp_path = os.path.join(addon_path, "tempborg.odf")
-    shutil.copy2(dom_path, os.path.join(addon_path, "tempdom_copy.odf"))
-    copy_path = os.path.join(addon_path, "tempdom_copy.odf")
-    # Datei borg.odf löschen, falls vorhanden
-    if os.path.exists(borg_path):
-        os.remove(borg_path)
-
-    # tempdom.odf zu borg.odf umbenennen
-    os.rename(dom_path, borg_path)
-    os.rename(copy_path, dom_path)
-    
-    update_output_text("The Dominion is on the march again", "green")
-
-    button3.place_forget()
-    button4.place(x=661, y=244)
+    races_path = os.path.join(addon_path, "races.odf")
+    if current_dir:
+        races_path = addon_path + "/races.odf"
+        with open(races_path, "r") as file:
+            content = file.read()
+            if "dominion" in content:
+                update_label_map("dominion", "borg")
+                new_content = content.replace("dominion", "borg")
+                with open(races_path, "w") as new_file:
+                    new_file.write(new_content)
+                    update_output_text("The Borg invasion has begun", "green")
+                if not button3.winfo_ismapped():  # Überprüfen, ob der Button sichtbar ist
+                    button3.place_forget()  # Falls sichtbar, ausblenden
+                    button4.place(x=528, y=244) # Falls nicht sichtbar, platzieren
+            elif "borg" in content:
+                update_label_map("borg", "dominion")
+                new_content = content.replace("borg", "dominion")
+                with open(races_path, "w") as new_file:
+                    new_file.write(new_content)
+                    update_output_text("The Dominion is on the march again", "green")
+                if not button3.winfo_ismapped():  # Überprüfen, ob der Button sichtbar ist
+                    button3.place_forget()  # Falls sichtbar, ausblenden
+                    button4.place(x=528, y=244) # Falls nicht sichtbar, platzieren
 
 def button4_clicked():
+    button4.place_forget()
     print("Borg")
     play_sound("sound_b.wav")
-    #update_output_text("The Dominion is on the march again", "green")
+   # update_output_text("New Missions activated", "green")
+    button4func()
+    button3.place(x=528, y=244)                
 
+def button4func():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     addon_path = os.path.join(current_dir, "addon")
-
-    # Umbenennen der Dateien
-    borg_path = os.path.join(addon_path, "borg.odf")
-    #dom_path = os.path.join(addon_path, "tempdom.odf")
-    temp_path = os.path.join(addon_path, "tempborg.odf")
-    shutil.copy2(temp_path, os.path.join(addon_path, "tempborg_copy.odf"))
-    copy_path = os.path.join(addon_path, "tempborg_copy.odf")
-    # Datei borg.odf löschen, falls vorhanden
-    if os.path.exists(borg_path):
-        os.remove(borg_path)
-
-    # tempdom.odf zu borg.odf umbenennen
-    os.rename(temp_path, borg_path)
-    os.rename(copy_path, temp_path)
-
-    update_output_text("The Borg invasion has begun", "green")
-
-    button4.place_forget()
-    button3.place(x=661, y=244)
+    races_path = os.path.join(addon_path, "races.odf")
+    if current_dir:
+        races_path = addon_path + "/races.odf"
+        with open(races_path, "r") as file:
+            content = file.read()
+            if "dominion" in content:
+                update_label_map("dominion", "borg")
+                new_content = content.replace("dominion", "borg")
+                with open(races_path, "w") as new_file:
+                    new_file.write(new_content)
+                    update_output_text("The Borg invasion has begun", "green")
+                if not button4.winfo_ismapped():  # Überprüfen, ob der Button sichtbar ist
+                    button4.place_forget()  # Falls sichtbar, ausblenden
+                    button3.place(x=528, y=244) # Falls nicht sichtbar, platzieren
+            elif "borg" in content:
+                update_label_map("borg", "dominion")
+                new_content = content.replace("borg", "dominion")
+                with open(races_path, "w") as new_file:
+                    new_file.write(new_content)
+                    update_output_text("The Dominion is on the march again", "green")
+                if not button4.winfo_ismapped():  # Überprüfen, ob der Button sichtbar ist
+                    button4.place_forget()  # Falls sichtbar, ausblenden
+                    button3.place(x=528, y=244) # Falls nicht sichtbar, platzieren
 
 def button5_clicked():
-    play_sound("sound_b.wav")
     button5.place_forget()
     print("New Missions")
     play_sound("sound_b.wav")
   #  update_output_text("Standard Missions activated", "green")
     button5func()
-    button6.place(x=1290, y=244)
+    button6.place(x=1456, y=244)
 
 def button6_clicked():
-    play_sound("sound_b.wav")
     button6.place_forget()
     print("Original Missions")
     play_sound("sound_b.wav")
    # update_output_text("New Missions activated", "green")
     button6func()
-    button5.place(x=1290, y=244)
+    button5.place(x=1456, y=244)
+
+def button7_clicked():
+    button7.place_forget()
+    print("Typhon Pact")
+    play_sound("sound_b.wav")
+    button7func()
+    button8.place(x=992, y=244)  
+
+def button7func():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    addon_path = os.path.join(current_dir, "addon")
+    races_path = os.path.join(addon_path, "races.odf")
+    if current_dir:
+        races_path = addon_path + "/races.odf"
+        with open(races_path, "r") as file:
+            content = file.read()
+            if "typhon" in content:
+                update_label_map("typhon", "rom")
+                new_content = content.replace("typhon", "rom")
+                with open(races_path, "w") as new_file:
+                    new_file.write(new_content)
+                    update_output_text("The Romulans strive for supremacy", "green")
+                if not button7.winfo_ismapped():  # Überprüfen, ob der Button sichtbar ist
+                    button7.place_forget()  # Falls sichtbar, ausblenden
+                    button8.place(x=992, y=244) # Falls nicht sichtbar, platzieren
+            elif "rom" in content:
+                update_label_map("rom", "typhon")
+                new_content = content.replace("rom", "typhon")
+                with open(races_path, "w") as new_file:
+                    new_file.write(new_content)
+                    update_output_text("The Typhon Pact has been formed", "green")
+                if not button7.winfo_ismapped():  # Überprüfen, ob der Button sichtbar ist
+                    button7.place_forget()  # Falls sichtbar, ausblenden
+                    button8.place(x=992, y=244) # Falls nicht sichtbar, platzieren
+
+def button8_clicked():
+    button8.place_forget()
+    print("Rom")
+    play_sound("sound_b.wav")
+    button8func()
+    button7.place(x=992, y=244) 
+
+def button8func():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    addon_path = os.path.join(current_dir, "addon")
+    races_path = os.path.join(addon_path, "races.odf")
+    if current_dir:
+        races_path = addon_path + "/races.odf"
+        with open(races_path, "r") as file:
+            content = file.read()
+            if "typhon" in content:
+                update_label_map("typhon", "rom")
+                new_content = content.replace("typhon", "rom")
+                with open(races_path, "w") as new_file:
+                    new_file.write(new_content)
+                    update_output_text("The Romulans strive for supremacy", "green")
+                if not button8.winfo_ismapped():  # Überprüfen, ob der Button sichtbar ist
+                    button8.place_forget()  # Falls sichtbar, ausblenden
+                    button7.place(x=992, y=244) # Falls nicht sichtbar, platzieren
+            elif "rom" in content:
+                update_label_map("rom", "typhon")
+                new_content = content.replace("rom", "typhon")
+                with open(races_path, "w") as new_file:
+                    new_file.write(new_content)
+                    update_output_text("The Typhon Pact has been formed", "green")
+                if not button8.winfo_ismapped():  # Überprüfen, ob der Button sichtbar ist
+                    button8.place_forget()  # Falls sichtbar, ausblenden
+                    button7.place(x=992, y=244) # Falls nicht sichtbar, platzieren
 
 def show_start_button():
     start_button.place(x=998, y=900)
@@ -165,17 +251,32 @@ def show_map_button():
 def check_for_dom_file():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     addon_path = os.path.join(current_dir, "addon")
-    dom_file_path = os.path.join(addon_path, "borg.odf")
+    dom_file_path = os.path.join(addon_path, "races.odf")
     with open(dom_file_path, "r") as file:
         content = file.read()
-        if "borgblablub" in content:
-            button3.place(x=661, y=244)
+        if "borg" in content:
+            button3.place(x=528, y=244)
             button4.place_forget()
             print("Borg")
-        elif "domblablub" in content:
-            button4.place(x=661, y=244)
+        elif "dominion" in content:
+            button4.place(x=528, y=244)
             button3.place_forget()
             print("Dom")
+
+def check_for_rom_file():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    addon_path = os.path.join(current_dir, "addon")
+    dom_file_path = os.path.join(addon_path, "races.odf")
+    with open(dom_file_path, "r") as file:
+        content = file.read()
+        if "rom" in content:
+            button7.place(x=992, y=244)
+            button8.place_forget()
+            print("Rom")
+        elif "typhon" in content:
+            button8.place(x=992, y=244)
+            button7.place_forget()
+            print("Typhon")
 
 def check_addon_directory():
     current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -184,11 +285,12 @@ def check_addon_directory():
     start_button.place(x=998, y=900)
     map_button.place(x=715, y=900)
     if os.path.exists(addon_temp_path):
-        button2.place(x=31, y=244)
+        button2.place(x=64, y=244)
         update_output_text("Remaster Modus aktiviert", "green")
         check_for_dom_file()
+        check_for_rom_file()
     elif os.path.exists(addon_container_path):
-        button1.place(x=31, y=244)
+        button1.place(x=64, y=244)
         update_output_text("Classic Modus aktiviert", "green")
     else:
         update_output_text("Addon Verzeichnisse nicht gefunden", "red")
@@ -207,10 +309,10 @@ def check_text_file():
         with open(mshell_path, "r") as file:
             content = file.read()
             if "fed1a" in content:
-                button6.place(x=1290, y=244)
+                button6.place(x=1456, y=244)
                 print("New Missions")
             elif "fed1" in content:
-                button5.place(x=1290, y=244)
+                button5.place(x=1456, y=244)
                 print("Original Missions")
 
 def rename_directories(old_name, new_name):
@@ -256,7 +358,7 @@ def button5func():
                     update_output_text("Standard Missions activated", "green")
                 if not button5.winfo_ismapped():  # Überprüfen, ob der Button sichtbar ist
                     button5.place_forget()  # Falls sichtbar, ausblenden
-                    button6.place(x=1290, y=244)  # Falls nicht sichtbar, platzieren
+                    button6.place(x=1456, y=244)  # Falls nicht sichtbar, platzieren
             elif "fed1" in content:
                 update_label_map("fed1", "fed1a")
                 update_label_map("fed2", "fed2a")
@@ -271,7 +373,7 @@ def button5func():
                     update_output_text("New Missions activated", "green")
                 if not button5.winfo_ismapped():
                     button5.place_forget()
-                    button6.place(x=1290, y=244)
+                    button6.place(x=1456, y=244)
 
 def button6func():
     current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -294,7 +396,7 @@ def button6func():
                     update_output_text("Standard Missions activated", "green")
                 if not button6.winfo_ismapped():
                     button6.place_forget()
-                    button5.place(x=1290, y=244)
+                    button5.place(x=1456, y=244)
             elif "fed1" in content:
                 update_label_map("fed1", "fed1a")
                 update_label_map("fed2", "fed2a")
@@ -309,7 +411,7 @@ def button6func():
                     update_output_text("New Missions activated", "green")
                 if not button6.winfo_ismapped():
                     button6.place_forget()
-                    button5.place(x=1290, y=244)
+                    button5.place(x=1456, y=244)
 
 def open_start_button():
     print("Launch")
@@ -366,16 +468,20 @@ def update_output_text(text, color):
     output_text.insert(tk.END, text + "\n", color)
     output_text.tag_configure(color, foreground=color)
     output_text.config(state=tk.DISABLED)
-print(Image.open("background_image.png"))
 
 
 # Tkinter-Fenster erstellen
 root = tk.Tk()
 root.title("Star Trek Armada Game Setup")
 root.resizable(width=False, height=False)
-
 pygame.init()
 pygame.mixer.init()
+
+# Bild für das Taskleistensymbol
+icon_path = "icon32.ico"
+# Icon in der Taskleiste setzenIst fertig, Release ist Weihnachten.
+windll.shell32.SetCurrentProcessExplicitAppUserModelID("myappid")
+root.iconbitmap(default=icon_path)
 
 # Hintergrundbild laden
 background_image = PhotoImage(file="background.png")
@@ -388,14 +494,14 @@ background_label.place(x=0, y=0, relwidth=1, relheight=1)
 # Button 1 erstellen
 image_A = PhotoImage(file="image_A.png")
 highlight_A = PhotoImage(file="highlight_A.png")
-button1 = tk.Button(root, image=image_A, command=button1_clicked, borderwidth=0, highlightthickness=0)
+button1 = tk.Button(root, image=image_A, command=button1_clicked, borderwidth=0, highlightthickness=0, relief="flat")
 button1.bind("<Enter>", lambda event: on_hover(button1, highlight_A))
 button1.bind("<Leave>", lambda event: on_leave(button1, image_A))
 
 # Button 2 erstellen
 image_B = PhotoImage(file="image_B.png")
 highlight_B = PhotoImage(file="highlight_B.png")
-button2 = tk.Button(root, image=image_B, command=button2_clicked, borderwidth=0, highlightthickness=0)
+button2 = tk.Button(root, image=image_B, command=button2_clicked, borderwidth=0, highlightthickness=0, relief="flat")
 button2.bind("<Enter>", lambda event: on_hover(button2, highlight_B))
 button2.bind("<Leave>", lambda event: on_leave(button2, image_B))
 
@@ -427,19 +533,33 @@ button6 = tk.Button(root, image=image_F, command=button6_clicked, borderwidth=0,
 button6.bind("<Enter>", lambda event: on_hover(button6, highlight_F))
 button6.bind("<Leave>", lambda event: on_leave(button6, image_F))
 
+# Button 7 erstellen
+image_G = PhotoImage(file="image_G.png")
+highlight_G = PhotoImage(file="highlight_G.png")
+button7 = tk.Button(root, image=image_G, command=button7_clicked, borderwidth=0, highlightthickness=0)
+button7.bind("<Enter>", lambda event: on_hover(button7, highlight_G))
+button7.bind("<Leave>", lambda event: on_leave(button7, image_G))
+
+# Button 8 erstellen
+image_H = PhotoImage(file="image_H.png")
+highlight_H = PhotoImage(file="highlight_H.png")
+button8 = tk.Button(root, image=image_H, command=button8_clicked, borderwidth=0, highlightthickness=0)
+button8.bind("<Enter>", lambda event: on_hover(button8, highlight_H))
+button8.bind("<Leave>", lambda event: on_leave(button8, image_H))
+
 # Button Start erstellen
-image_G = PhotoImage(file="image_S.png")
-highlight_G = PhotoImage(file="highlight_S.png")
-start_button = tk.Button(root, image=image_G, command=open_start_button, borderwidth=0, highlightthickness=0)
-start_button.bind("<Enter>", lambda event: on_hover(start_button, highlight_G))
-start_button.bind("<Leave>", lambda event: on_leave(start_button, image_G))
+image_S = PhotoImage(file="image_S.png")
+highlight_S = PhotoImage(file="highlight_S.png")
+start_button = tk.Button(root, image=image_S, command=open_start_button, borderwidth=0, highlightthickness=0)
+start_button.bind("<Enter>", lambda event: on_hover(start_button, highlight_S))
+start_button.bind("<Leave>", lambda event: on_leave(start_button, image_S))
 
 # Button Map erstellen
-image_H = PhotoImage(file="image_M.png")
-highlight_H = PhotoImage(file="highlight_S.png")
-map_button = tk.Button(root, image=image_H, command=open_map_button, borderwidth=0, highlightthickness=0)
-map_button.bind("<Enter>", lambda event: on_hover(map_button, highlight_H))
-map_button.bind("<Leave>", lambda event: on_leave(map_button, image_H))
+image_M = PhotoImage(file="image_M.png")
+highlight_M = PhotoImage(file="highlight_S.png")
+map_button = tk.Button(root, image=image_M, command=open_map_button, borderwidth=0, highlightthickness=0)
+map_button.bind("<Enter>", lambda event: on_hover(map_button, highlight_M))
+map_button.bind("<Leave>", lambda event: on_leave(map_button, image_M))
 
 # Lade die Schriftart
 custom_font = font.Font(family="FederationDS9Title", size=16)  # Ändern Sie die Schriftgröße hier
