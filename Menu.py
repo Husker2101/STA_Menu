@@ -419,11 +419,11 @@ def check_tech_file():
                 print("Standard Techtree")
 
 def show_start_button():
-    start_button.place(x=998, y=900)
+    start_button.place(x=1024, y=877)
 
 
 def show_map_button():
-    map_button.place(x=998, y=900)
+    map_button.place(x=686, y=877)
 
 
 def check_for_dom_file():
@@ -526,7 +526,7 @@ def open_start_button():
         root.destroy()
 
 def open_map_button():
-    print("Launch")
+    print("Launch Editor")
     exe_directory = os.path.dirname(os.path.abspath(__file__))
     if exe_directory:
         # Starte die Exe in einem eigenen Prozess
@@ -624,14 +624,14 @@ button4.bind("<Leave>", lambda event: on_leave(button4, image_D))
 
 # Button 5 erstellen
 image_E = PhotoImage(file="image_E.png")
-highlight_E = PhotoImage(file="highlight_A.png")
+highlight_E = PhotoImage(file="highlight_E.png")
 button5 = tk.Button(root, image=image_E, command=button5_clicked, borderwidth=0, highlightthickness=0)
 button5.bind("<Enter>", lambda event: on_hover(button5, highlight_E))
 button5.bind("<Leave>", lambda event: on_leave(button5, image_E))
 
 # Button 6 erstellen
 image_F = PhotoImage(file="image_F.png")
-highlight_F = PhotoImage(file="highlight_A.png")
+highlight_F = PhotoImage(file="highlight_F.png")
 button6 = tk.Button(root, image=image_F, command=button6_clicked, borderwidth=0, highlightthickness=0)
 button6.bind("<Enter>", lambda event: on_hover(button6, highlight_F))
 button6.bind("<Leave>", lambda event: on_leave(button6, image_F))
