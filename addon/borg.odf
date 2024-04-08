@@ -3,7 +3,7 @@
 name = "borg"
 
 // Name displayed in the interface for this race.
-displayName = "Dominion"
+displayName = "Borg"
 
 // Label for officers in interface.
 officerName = "GUI_SD_BORG_OFF_LABEL"

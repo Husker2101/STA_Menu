@@ -1,6 +1,6 @@
 numberOfRaces = 10
-race0 = "borg.odf"
-race1 = "dom.odf"
+race0 = "card.odf"
+race1 = "borg.odf"
 race2 = "fed.odf"
 race3 = "kling.odf"
 race4 = "rom.odf"
