@@ -662,13 +662,13 @@ button7.bind("<Enter>", lambda event: on_hover(button7, highlight_G))
 button7.bind("<Leave>", lambda event: on_leave(button7, image_G))
 
 # Button C erstellen | Cardassian
-image_CC_path = resource_path("image_G.png")
-image_CC = tk.PhotoImage(file=image_CC_path)
-highlight_CC_path = resource_path("highlight_G.png")
-highlight_CC = tk.PhotoImage(file=highlight_CC_path)
+image_I_path = resource_path("image_I.png")
+image_I = tk.PhotoImage(file=image_I_path)
+highlight_I_path = resource_path("highlight_I.png")
+highlight_I = tk.PhotoImage(file=highlight_I_path)
 buttonc = tk.Button(root, image=image_G, command=buttonc_clicked, borderwidth=0, highlightthickness=0)
-buttonc.bind("<Enter>", lambda event: on_hover(buttonc, highlight_CC))
-buttonc.bind("<Leave>", lambda event: on_leave(buttonc, image_CC))
+buttonc.bind("<Enter>", lambda event: on_hover(buttonc, highlight_I))
+buttonc.bind("<Leave>", lambda event: on_leave(buttonc, image_I))
 
 # Button 8 erstellen | Typhon Pact
 image_H_path = resource_path("image_H.png")
@@ -680,13 +680,13 @@ button8.bind("<Enter>", lambda event: on_hover(button8, highlight_H))
 button8.bind("<Leave>", lambda event: on_leave(button8, image_H))
 
 # Button 9 erstellen | Standard Techtree
-image_I_path = resource_path("image_TechS.png")
-image_I = tk.PhotoImage(file=image_I_path)
-highlight_I_path = resource_path("highlight_TechS.png")
-highlight_I = tk.PhotoImage(file=highlight_I_path)
+image_T_path = resource_path("image_TechS.png")
+image_T = tk.PhotoImage(file=image_T_path)
+highlight_T_path = resource_path("highlight_TechS.png")
+highlight_T = tk.PhotoImage(file=highlight_T_path)
 button9 = tk.Button(root, image=image_I, command=button9_clicked, borderwidth=0, highlightthickness=0)
-button9.bind("<Enter>", lambda event: on_hover(button9, highlight_I))
-button9.bind("<Leave>", lambda event: on_leave(button9, image_I))
+button9.bind("<Enter>", lambda event: on_hover(button9, highlight_T))
+button9.bind("<Leave>", lambda event: on_leave(button9, image_T))
 
 # Button 10 erstellen | Standard Missions
 image_J_path = resource_path("image_TechE.png")
