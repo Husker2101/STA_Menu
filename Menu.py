@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import font, Label, Frame, Text
-import subprocess, os, sys
-import pygame
+import subprocess, os, sys, pygame
 from ctypes import windll
 import functionsstuff as cmc
 
@@ -142,7 +141,7 @@ def button4func():
         with open(races_path, "r") as file:
             content = file.read()
             if "dominion" in content:
-                cmc.cmc.update_label_map("dominion", "cardassian")
+                cmc.update_label_map("dominion", "cardassian")
                 new_content = content.replace("dominion", "cardassian")
                 with open(races_path, "w") as new_file:
                     new_file.write(new_content)

@@ -1,6 +1,4 @@
-import os
-import shutil
-import pygame
+import os, shutil, pygame
 from pygame import mixer
 
 def update_label_map(old_label, new_label):
