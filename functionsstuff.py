@@ -65,7 +65,7 @@ def replace_mshell_with_copy():
         print("mshell.set nicht gefunden")
 
 def rename_directories(old_name, new_name):
-    current_dir = os.path.dirname(os.path.abspath(__file__))
+    current_dir = os.path.dirname(os.path.abspath(__file__)) 
     old_path = os.path.join(current_dir, old_name)
     new_path = os.path.join(current_dir, new_name)
 
